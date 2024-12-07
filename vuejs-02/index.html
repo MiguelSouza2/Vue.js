@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>condicional</title>
+  </head>
+  <body>
+    <div style="border-radius: 10px;background-color: beige; padding: 1vw;margin:2vh">
+      <h1>Explicação</h1>
+      <p>
+        Assim que você clicar no botão, a variável
+        <span style="color: blue">seen</span> vai ser trocada para
+        <span style="color: red">false</span> se ela já estiver definida como
+        <span style="color: green">true</span>(padrão), caso o contrário, irá
+        manter-se a mesma
+      </p>
+    </div>
+
+    <div id="conditional-text">
+      <button v-on:click="changeMessage">Change message</button>
+      <p v-if="seen" style="color: red">{{ message }}</p>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+
+    <script>
+      var app = new Vue({
+        el: "#conditional-text",
+        data: {
+          message: "Você está me vendo ;)",
+          seen: true,
+        },
+        // Adicionar o evento de clique para mudar o valor de 'seen'
+        methods: {
+          changeMessage: function () {
+            if (this.seen == false) {
+              this.seen = true;
+            } else {
+              this.seen = false;
+            }
+          },
+        },
+      });
+    </script>
+  </body>
+</html>
