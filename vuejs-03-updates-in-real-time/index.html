@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>update in real time</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f0f2f5;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+      }
+
+      .post-container {
+        width: 400px;
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        padding: 16px;
+      }
+
+      .post-header {
+        font-size: 18px;
+        font-weight: bold;
+        margin-bottom: 16px;
+      }
+
+      .post-preview {
+        background-color: #f0f2f5;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        padding: 8px;
+        margin-bottom: 16px;
+        font-size: 14px;
+        color: #555;
+        min-height: 60px;
+        overflow-wrap: break-word;
+      }
+
+      .post-textarea {
+        width: 100%;
+        height: 100px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        padding: 8px;
+        font-size: 14px;
+        resize: none;
+        outline: none;
+      }
+
+      .post-actions {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 12px;
+      }
+
+      .action-btn {
+        background-color: #f0f2f5;
+        border: none;
+        border-radius: 4px;
+        padding: 8px 12px;
+        cursor: pointer;
+        font-size: 14px;
+      }
+
+      .action-btn:hover {
+        background-color: #e4e6eb;
+      }
+
+      .post-button {
+        background-color: #1877f2;
+        color: white;
+        border: none;
+        padding: 8px 16px;
+        border-radius: 4px;
+        font-size: 14px;
+        cursor: pointer;
+        margin-left: auto;
+      }
+
+      .post-button:hover {
+        background-color: #1558d6;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app">
+      <div class="post-container">
+        <div class="post-header">Criar publicação</div>
+        <div id="post-preview" class="post-preview">
+          <p>{{ message }}</p>
+        </div>
+        <textarea
+          class="post-textarea"
+          placeholder="O que você está pensando?"
+          v-model="message"
+        ></textarea>
+        <!-- Botões -->
+        <div class="post-actions">
+          <button class="action-btn">📷 Foto</button>
+          <button class="action-btn">😊 Emojis</button>
+          <button class="post-button">Publicar</button>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+    <script>
+      var app = new Vue({
+        el: "#app",
+        data: {
+            message: "Escreva algo e veja a prévia aqui...",
+        }
+      });
+    </script>
+  </body>
+</html>

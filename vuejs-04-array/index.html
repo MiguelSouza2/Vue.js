@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>array</title>
+
+    <style>
+        .item{
+            background-color: rgb(216, 216, 216) ;
+            padding: 10px 1vw 7px 1vw;
+            margin: 2vw 0 2vw 0;
+            border-radius: 5px;
+        }
+      </style>
+  </head>
+
+ 
+  <body>
+    <h1>Demonstração do uso de arrays com vue.js</h1>
+
+    <div id="app">
+      <section
+        style="
+          background-color: beige;
+          border-radius: 10px;
+          padding: 4px 1vw 4px 1vw;
+        "
+      >
+        <h2>Lista:</h2>
+        <ul v-for="list in arrayList">
+          {{list}}
+        </ul>
+      </section>
+
+      <!-- push -->
+      <section class="item">
+        <h2>Adicionar item:</h2>
+        <input v-model="newItem" type="text" />
+        <button @click="addItem">Adicionar</button>
+      </section>
+      <!-- pop -->
+      <section class="item">
+        <h2>Remover item:</h2>
+        <button @click="removeItem">Remover último</button>
+      </section>
+      <!-- shift -->
+      <section class="item">
+        <h2>O primeiro item:</h2>
+        <button @click="shiftItem">Mostrar</button>
+      </section>
+      <!-- slice -->
+      <section class="item">
+        <h2>Selecionar da lista:</h2>
+        <input v-model="startSlice" type="number" placeholder="Início" min="0" :max="arrayList.length"/>
+        <input v-model="endSlice" type="number" placeholder="Fim" :min="parseInt(startSlice) + 1" :max="arrayList.length"/>
+        <button @click="sliceArray">Recortar</button>
+      </section>
+      <!-- random -->
+       <section class="item">
+        <h2>selecionar aleatoriamente</h2>
+        <button @click="randomArray">selecionar</button>
+       </section>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+    <script>
+      var app = new Vue({
+        el: "#app",
+        data: {
+          arrayList: ["arroz", "feijão", "macarrão", "alface", "ovo", "carne"],
+          newItem: "",
+          startSlice: 0,
+          endSlice: 0,
+        },
+
+        methods: {
+          addItem() {
+            if (this.newItem) {
+              this.arrayList.push(this.newItem);
+              this.newItem = "";
+            }
+          },
+          removeItem() {
+            if (this.arrayList.length > 0) {
+              this.arrayList.pop();
+            } else {
+              alert("Não há itens na lista!");
+            }
+          },
+          shiftItem() {
+            if (this.arrayList.length > 0) {
+              alert(this.arrayList[0]);
+            } else {
+              alert("Não há itens na lista!");
+            }
+          },
+          sliceArray(){
+            if(this.arrayList.length > 0){
+                alert(this.arrayList.slice(this.startSlice, this.endSlice));
+                 
+            }else{
+                alert("Não há itens na lista!");
+            }
+          },
+          randomArray(){
+            if(this.arrayList.length > 0){
+                max = this.arrayList.length;
+                
+                alert(this.arrayList[Math.floor(Math.random(0, max) * max)]);
+                 
+            }else{
+                alert("Não há itens na lista!");    
+            }
+          }
+        },
+      });
+    </script>
+  </body>
+</html>
