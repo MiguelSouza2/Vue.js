@@ -1,4 +1,4 @@
-# Vue.js - Exercícios Práticos
+# Vue.js 
 
 Bem-vindo ao meu repositório! Aqui, você encontrará uma série de **exercícios práticos** para aprender **Vue.js** de forma simples e intuitiva.
 
